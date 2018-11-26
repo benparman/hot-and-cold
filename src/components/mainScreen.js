@@ -4,7 +4,7 @@ import React from 'react';
 // import guessedNumbers from './guessedNumbers';
 // import guessInput from './guessInput';
 // import msgBox from './msgBox';
-// import NewGame from './gameScreen';
+
 
 export default class MainScreen extends React.Component {
   constructor(props) {
@@ -13,13 +13,30 @@ export default class MainScreen extends React.Component {
       gameNumber: 55,
       userGuess: 50,
       guessCount: 0,
-      guessedNumbers: []
+      guessedNumbers: [],
+      currentGuess: undefined
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitGuess = this.submitGuess.bind(this);
   }
 
   generateNumber = () => {
-    const number = Math.random()*100;
-    this.setState({gameNumber: number})
+    const newNum = Math.ceil(Math.random().toFixed(2)*100);
+    console.log('This is newNum: ', newNum);
+    this.setState({gameNumber: newNum})
+  }
+
+  handleChange = (e) => {
+    e.preventDefault();
+    this.setState({currentGuess: e.target.value})
+    console.log(e.target.value);
+  }
+
+  submitGuess = (e) => {
+    e.preventDefault();
+    this.state.guessedNumbers.push(this.state.currentGuess);
+    this.setState({currentGuess: undefined})
+    console.log(this.state.guessedNumbers);
   }
 
   render() {
@@ -29,12 +46,20 @@ export default class MainScreen extends React.Component {
     return (
       <div className="mainScreen">
         <h2>The current number is : {gameNumber}</h2>
-        <button onClick={e => {
-          e.preventDefault();
-          const newNum = Math.ceil(Math.random().toFixed(2)*100);
-          console.log('This is newNum: ', newNum);
-          this.setState({gameNumber: newNum})
-        }}>Generate New Number</button>
+        <h3>Your guess are: {this.state.guessedNumbers}</h3>
+        <button onClick={e => {e.preventDefault();this.generateNumber()}}>
+          Generate New Number
+        </button>
+        <form onSubmit={this.submitGuess}>
+          <input type="text" placeholder="guess!"
+            value={this.state.currentGuess}
+            onChange = {e => {
+              e.preventDefault();
+              this.handleChange(e);
+            }}
+          />
+          <input type="submit" value="Guess!"/>
+        </form>
       </div>
     );
   }
