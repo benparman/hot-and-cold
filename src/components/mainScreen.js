@@ -37,6 +37,15 @@ export default class MainScreen extends React.Component {
     this.state.guessedNumbers.push(this.state.currentGuess);
     this.setState({currentGuess: undefined})
     console.log(this.state.guessedNumbers);
+    this.incrementCounter(e);
+  }
+
+  incrementCounter = (e) => {
+    e.preventDefault();
+    let guess = this.state.guessCount;
+    guess++;
+    console.log('this is guess: ', guess)
+    this.setState({guessCount: guess})
   }
 
   render() {
@@ -46,11 +55,12 @@ export default class MainScreen extends React.Component {
     return (
       <div className="mainScreen">
         <h2>The current number is : {gameNumber}</h2>
-        <h3>Your guess are: {this.state.guessedNumbers}</h3>
+        <h3>Your guesses are: {this.state.guessedNumbers}</h3>
+        <h3>You've guessed {this.state.guessCount} times.</h3>
         <button onClick={e => {e.preventDefault();this.generateNumber()}}>
           Generate New Number
         </button>
-        <form onSubmit={this.submitGuess}>
+        <form onSubmit ={this.submitGuess}>
           <input type="text" placeholder="guess!"
             value={this.state.currentGuess}
             onChange = {e => {
