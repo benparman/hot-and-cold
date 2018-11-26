@@ -1,5 +1,9 @@
 import React from 'react';
 
+import MsgBox from './msgBox';
+import GuessInput from './guessInput';
+import NewGameButton from './newGameButton'
+
 export default class MainScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -50,27 +54,16 @@ export default class MainScreen extends React.Component {
 
   render() {
     console.log('CURRENT STATE: ', this.state)
-
-
     //Change form below to a componenet that can still access state?
     return (
       <div className="mainScreen">
-        <h2>The current number is: {this.state.gameNumber}</h2>
-        <h3>Your guesses are: {this.state.guessedNumbers}</h3>
-        <h3>You've guessed {this.state.guessCount} times.</h3>
-
-        <button onClick={e => {e.preventDefault();this.newGame()}}>
+      {/* <button onClick={e => {e.preventDefault();this.newGame()}}>
           Generate New Number
-        </button>
-        <form onSubmit ={this.submitGuess}>
-          <input placeholder="guess a number"
-            onChange = {e => {
-              e.preventDefault();
-              this.handleChange(e);
-            }}
-          />
-          <input type="submit" value="Guess!"/>
-        </form>
+        </button> */}
+
+        <NewGameButton newGame={this.newGame} />
+        <MsgBox state={this.state}/>
+        <GuessInput submitGuess={this.submitGuess} handleChange={this.handleChange}/>
       </div>
     );
   }
