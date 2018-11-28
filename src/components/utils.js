@@ -1,8 +1,9 @@
 
-
-
-
 const newNumber = () => Math.ceil(Math.random().toFixed(2)*100);
+
+const checkInput = (myString) => {
+  return /\d/.test(myString);
+}
 
 const compareNumbers = (gameNumber, currentGuess) => {
   console.log('compare numbers ran')
@@ -10,7 +11,20 @@ const compareNumbers = (gameNumber, currentGuess) => {
     message: '',
     color: ''
   };
+
   let difference = gameNumber-currentGuess;
+  let isnum = /^\d+$/.test(currentGuess);
+
+  if (isnum === false) {
+    feedback.message = "You must pick only numbers :)";
+    feedback.color = 'red';
+    return feedback;
+  }
+  if (currentGuess <0 || currentGuess > 99) {
+    feedback.message = "Pick an umber between 0-99!";
+    feedback.color = 'red';
+    return feedback;
+  }
   if (difference === 0) {
     feedback.message = "Winner!";
     feedback.color = 'red';
@@ -40,5 +54,6 @@ const compareNumbers = (gameNumber, currentGuess) => {
 
 export {
   newNumber, 
-  compareNumbers
+  compareNumbers,
+  checkInput
 }
