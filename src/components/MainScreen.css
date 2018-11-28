@@ -1,0 +1,74 @@
+.MainScreen {
+  width: 30%;
+  margin: 100px auto;
+  /* border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc; */
+  padding: 16px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px
+}
+
+.ResultMessage h1 {
+  color: white;
+  font-size: 20px;
+  padding: 20px
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.MainCard {
+  background-color: #3c4263;
+  margin: 15px;
+}
+
+.MainCard h1 {
+  margin: 0;
+}
+
+.InputForm input {
+  margin: 10px;
+  background-color: #22253b;
+  border: 1px solid #21253c;
+  color: #717172;
+}
+
+.red {
+  background-color: #b3404c;
+  /* color: red; */
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.lightBlue {
+  background-color: lightblue;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.teal {
+  background-color: #68a6ab;
+}
+
+
+
+
+.white {
+  color: white;
+}
+/* .ResultMessage {
+  background-color:red;
+} */

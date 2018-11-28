@@ -1,8 +1,9 @@
 import React from 'react';
-import GameStatus from './gameStatus';
-import GuessInput from './guessInput';
-import ResultMessage from './resultMessage';
-import NewGameButton from './newGameButton';
+import './MainScreen.css'
+import GameStatus from './GameStatus';
+import GuessInput from './GuessInput';
+import ResultMessage from './ResultMessage';
+import NewGameButton from './NewGameButton';
 import {newNumber, compareNumbers} from './utils';
 
 export default class MainScreen extends React.Component {
@@ -11,12 +12,14 @@ export default class MainScreen extends React.Component {
     this.state = {
       gameNumber: newNumber(),
       guessedNumbers: [],
-      currentGuess: undefined
+      currentGuess: undefined,
+      resultMessage: 'Make a guess!',
+      resultColor: "MainCard, red"
     }
   }
-//convert input string-number to a number before comparison
-//validate input for number only 0-99 or no more than 2 digits
-//print error on screen in present (ie must enter numbers only)
+  //convert input string-number to a number before comparison
+  //validate input for number only 0-99 or no more than 2 digits
+  //print error on screen in present (ie must enter numbers only)
   newGame = () => {  //********Call this on load to define initial state?
     const newNum = newNumber();
     console.log('This is newNum: ', newNum);
@@ -25,7 +28,7 @@ export default class MainScreen extends React.Component {
       guessCount: 0,
       guessedNumbers: [],
       currentGuess: undefined,
-      resultMessage: '',
+      resultMessage: 'Make a guess!',
       resultColor: ''
     })
   }
@@ -57,11 +60,25 @@ export default class MainScreen extends React.Component {
   render() {
     console.log('CURRENT STATE: ', this.state)
     return (
-      <div className="mainScreen">
+      <div>
         <NewGameButton newGame={this.newGame} />
-        <GameStatus guessedNumbers={this.state.guessedNumbers} gameNumber={this.state.gameNumber}/>
-        <GuessInput submitGuess={this.submitGuess} handleChange={this.handleChange}/>
-        <ResultMessage resultMessage={this.state.resultMessage} resultColor={this.state.resultColor}/>
+        
+        <div className="MainScreen">
+        <h1 className="white">HOT or COLD?</h1>
+
+          <div className="MainCard">
+              <div className={this.state.resultColor}>
+                <ResultMessage resultMessage={this.state.resultMessage} resultColor={this.state.resultColor}/>
+              </div>
+              <div className="MainCard">
+                <GuessInput submitGuess={this.submitGuess} handleChange={this.handleChange} guessNumber={this.state.guessedNumbers.length}/>
+              </div>
+              <div className="MainCard, teal">
+                <GameStatus guessedNumbers={this.state.guessedNumbers} gameNumber={this.state.gameNumber}/>
+              </div>
+          </div>
+
+        </div>
       </div>
     );
   }

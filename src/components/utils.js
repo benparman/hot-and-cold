@@ -43,7 +43,7 @@ const compareNumbers = (gameNumber, currentGuess) => {
   }
   else if (difference >= -25 && difference <= 25) {
     feedback.message="Cool...";
-    feedback.color='light blue';
+    feedback.color='lightBlue';
   }
   else {
     feedback.message="Brrr.... Where's my coat?";
