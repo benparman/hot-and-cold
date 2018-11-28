@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 
-export default function newGame(props) {
+// export default function NewGame(props) {
 
-  return (
-    <button onClick={e => e.preventDefault()}>
-      Click Me
-    </button>
-  )
+//   return (
+//     <button onClick={e => e.preventDefault()}>
+//       Click Me
+//     </button>
+//   )
 
-}
+// }
