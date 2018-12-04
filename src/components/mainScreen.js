@@ -81,6 +81,7 @@ export default class MainScreen extends React.Component {  //react methods are o
           <div className="darkRedBox">
             <h1 className="white">What do I do?</h1>
           </div>
+          <div className="white">
           <p>This is a Hot or Cold Number Guessing Game. The game goes like this:</p>
           <ol>
             <li>I pick a random secret number between 1 to 100 and keep it hidden.</li>
@@ -88,6 +89,7 @@ export default class MainScreen extends React.Component {  //react methods are o
             <li>You will get feedback on how close ("hot") or far ("cold") your guess is.</li>
           </ol>
           <p>So, Are you ready?</p>
+          </div>
           <button className="close" onClick={e => {
             e.preventDefault();
             this.showGame()}}href="#">Got it!
