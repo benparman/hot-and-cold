@@ -4,16 +4,16 @@ export default function GuessInput(props) {
   return (
     <div className="InputForm">
       <form onSubmit ={props.submitGuess}>
-          <input name="guess" placeholder="Enter your Guess"
+          <input className="formInput" name="guess" placeholder="Enter your Guess"
             onChange = {e => {
               e.preventDefault();
               props.handleChange(e);
             }}
           />
         <br></br>
-        <input type="submit" value="Guess!"/>
+        <input className="SubmitButton formInput" type="submit" value="Guess!"/>
       </form>
-      <h3>Guess #{props.guessNumber}</h3>
+      <h3>Guess # <span className="OrangeText">{props.guessNumber}</span></h3>
     </div>
   )
 }

@@ -2,10 +2,9 @@ import React from 'react';
 
 export default function NewGameButton(props) {
   return (
-    <button onClick={e => {
+    <h3 className="newGameButton white" type="click" onClick={e => {
       e.preventDefault();
-      props.newGame()}}>
-          New Game
-        </button>
+      props.newGame()}}>+NEW GAME
+        </h3>
   )
 }
